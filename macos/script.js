@@ -172,13 +172,17 @@ function update() {
 
 function draw() {
     ctx.fillStyle = "#1a1a1a";
-	ctx.fillRect(canvas.width, canvas.height, 0, 0);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     drawGrid();
     drawGhost();
 }
 
 function loop() {
+    camera.x = lerp(camera.x, target.x, SMOOTHING);
+    camera.y = lerp(camera.y, target.y, SMOOTHING);
+    camera.scale = lerp(camera.scale, target.scale, SMOOTHING);
+    
     draw();
     update();
     
