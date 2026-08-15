@@ -1,3 +1,17 @@
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+const camera = { x: 0, y: 0, scale: 1, min: 0.2, max: 5 };
+let target = { x: camera.x, y: camera.y, scale: camera.scale };
+const SMOOTHING = 0.15;
+
+let isPanning = false;
+let panStart = { x: 0, y: 0 };
+let targetAtPanStart = { x: 0, y: 0 };
+let mouse = { x: 0, y: 0 };
+
+const BG_COLOR = "#1a1a1a";
+const GRID_COLOR = "#232323";
 const GRID_SIZE = 64;
 
 const HOUSE_W = GRID_SIZE * 1.5;
@@ -46,9 +60,9 @@ window.addEventListener('mousemove', e => {
 });
 
 window.addEventListener('wheel', e => {
-    if (selectedTool === "house") {
+    if (selectedTool === "house" && keys["shift"]) {
         e.preventDefault();
-        ghostBuilding.angle += e.deltaX < 0 ? 5 : -5;
+        ghostBuilding.angle += e.deltaY < 0 ? 5 : -5;
     }
     else {
         e.preventDefault();
