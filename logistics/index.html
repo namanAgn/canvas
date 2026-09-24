@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics</title>
+    <style>
+        body, html { 
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .tools {
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tool {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: rgb(33, 33, 33);
+            border: solid 4px rgb(59, 59, 59);
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .tool.selected {
+            background-color: rgb(35, 29, 60);
+            border: solid 4px rgb(43, 36, 106);
+            scale: 1.1;
+        }
+
+        .tool:hover {
+            scale: 1.1;
+        }
+
+        .tool.straight {
+            height: 60px;
+            width: 60px;
+        }
+
+        .tool.straight img {
+            height: 55px;
+            width: 55px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tools">
+        <div class="tool curve"><img src="assets/curve.svg"></div>
+        <div class="tool straight"><img src="assets/straight.svg"></div>
+        <div class="tool house"><img src="assets/house.svg"></div>
+    </div>
+
+    <canvas id="c"></canvas>
+
+    <script src="scripts/constants.js" type="module"></script>
+    <script src="scripts/canvas.js" type="module"></script>
+    <script src="scripts/utils.js" type="module"></script>
+    <script src="scripts/dom.js" type="module"></script>
+    <script src="scripts/road.js" type="module"></script>
+    <script src="scripts/main.js" type="module"></script>
+</body>
+</html>
